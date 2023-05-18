@@ -16,3 +16,5 @@ card app, display all the cards that are available in the collection. No need to
 user to a specific card.
  Use basic styling techniques ( no need to copy all style designs ), just keep the styling 
 minimal.
+
+![image](https://github.com/Gaurav-Lambha/card-payment-angular-app/assets/23712966/e027cdaf-57b5-4155-97be-ef6b2f597310)
