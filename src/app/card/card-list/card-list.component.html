@@ -1,0 +1,43 @@
+<div *ngFor="let item of cardData; let i = index" ngbAccordionItem [collapsed]="false">
+    <h2 ngbAccordionHeader>
+        <button ngbAccordionButton>Card ending in {{ item?.number | lastFourDigits }}</button>
+    </h2>
+    <div ngbAccordionCollapse>
+        <div ngbAccordionBody>
+            <ng-template>
+                <div class="row">
+                    <div class="col-6">
+                        <label class="cardlbl">Card Number</label>
+                        <b>{{item?.number | creditCardAsterisks}}</b>
+                    </div>
+                    <div class="col-6">
+                        <label class="cardlbl">Card Expiry Date</label>
+                        <b>{{item?.expiryDate}}</b>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6">
+                        <label class="cardlbl">Name on Card</label>
+                        <b>{{item?.name}}</b>
+                    </div>
+                    <div class="col-6">
+                        <div>
+                            <button type="button" class="action-Btn btn btn-sm btn-info" (click)="onUpdateCard(item, i)">Update Card</button>
+                            <button type="button" class="action-Btn btn btn-sm btn-danger" (click)="onDeleteCard(item._id)">Delete Card</button>
+                        </div>
+                      
+                    </div>
+                </div>
+
+                <div *ngIf="updateCardData">
+                    <app-card-form [data]="updateCardData" (cardEvent)="onCardEvent($event)"></app-card-form>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>
+
+<div class="card" *ngIf="!cardData?.length">
+   <div class="card-body">No cards have been saved yet.</div>
+</div>

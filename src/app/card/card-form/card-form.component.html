@@ -1,0 +1,33 @@
+<div class="p-4 pl-10 pr-10">
+    <form [formGroup]="cardForm" #form="ngForm">
+        <div class="row">
+            <div class="col-4 d-grid">
+                <label for="card-name">Name on Card: </label>
+                <input id="card-name" type="text" formControlName="name" class="form-control form-control-sm" required minlength="3" maxlength="50" [class.is-invalid]="name.invalid && (name.dirty || name.touched)">
+                <div *ngIf="name.invalid && (name.dirty || name.touched) && name.errors?.['minlength']" class="invalid-feedback">                   
+                      Name must have at least 3 character.
+                </div>
+            </div>
+            <div class="col-4 d-grid">
+                <label for="last-name">Card Number: </label>
+                <input cardNumber id="last-name" type="text" formControlName="number" class="form-control form-control-sm" required minlength="16" maxlength="20" [class.is-invalid]="number.invalid && (number.dirty || number.touched)">
+                <div *ngIf="number.invalid && (number.dirty || number.touched) && number.errors?.['minlength']" class="invalid-feedback">                   
+                    Card Number must have at least 16 character.
+                </div>
+            </div>
+            <div class="col-4 d-grid">
+                <label for="date">Card Expiry Date(MM/YY): </label>
+                <input id="datee" type="text" formControlName="expiryDate" class="form-control form-control-sm" required [class.is-invalid]="expiryDate.invalid && (expiryDate.dirty || expiryDate.touched)">
+                <div *ngIf="expiryDate.invalid && (expiryDate.dirty || expiryDate.touched)" class="invalid-feedback">
+                  <div *ngIf="expiryDate.errors?.['invalidFormat']">  Invalid expiration date format (MM/YY).</div>
+                  <div *ngIf="expiryDate.errors?.['expired']">Credit card has expired.</div>
+                </div>
+            </div>           
+        </div>
+        <div class="row mt-4">
+            <div class="col-2 d-grid">
+                <button type="button" class="btn btn-sm btn-primary" (click)="validate()">{{btnText}}</button>
+            </div>
+        </div>
+    </form>
+</div>

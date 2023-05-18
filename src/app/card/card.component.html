@@ -1,0 +1,29 @@
+<div ngbAccordion class="pt-3">
+	<!--Card List Content-->
+	<div ngbAccordionItem [collapsed]="false">
+		<h2 ngbAccordionHeader>
+			<button ngbAccordionButton>Your Save credit and debit cards</button>
+		</h2>
+		<div ngbAccordionCollapse>
+			<div ngbAccordionBody>
+				<ng-template>
+					<app-card-list></app-card-list>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+
+	<!--Card Form Content-->
+	<div ngbAccordionItem [collapsed]="false" class="mt-3">
+		<h2 ngbAccordionHeader>
+			<button ngbAccordionButton>Add a new card</button>
+		</h2>
+		<div ngbAccordionCollapse>
+			<div ngbAccordionBody>
+				<ng-template>
+					<app-card-form></app-card-form>
+				</ng-template>
+			</div>
+		</div>
+	</div>
+</div>
